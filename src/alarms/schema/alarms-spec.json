@@ -90,6 +90,21 @@
             "description": "Alarm not found"
           }
         }
+      },
+      "post": {
+        "description": "Update an existing alarm",
+        "responses": {
+          "200": {
+            "description": "Update an existing alarm",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./alarms-schema.json#/components/schemas/UpdateAlarmRequestBody"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

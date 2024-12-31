@@ -1,9 +1,10 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
-import { AlarmsService } from './alarms.service';
+import { ApplicationBootstrapOptions } from '../../common/interfaces/application-bootstrap-options.interface';
 import { AlarmsController } from '../presenter/http/alarms.controller';
-import { ApplicationBootstrapOptions } from '../../common/application-bootstrap-options.interface';
 import { AlarmsPersistenceModule } from '../infrastructure/persistence/alarms-persistence.module';
 import { AlarmFactory } from '../domain/factories/alarm.factory';
+import { AlarmsService } from './alarms.service';
+import { MarkAsResolvedUseCase } from './use-cases/mark-as-resolved.use-case';
 
 @Module({})
 export class AlarmsModule {
@@ -16,12 +17,12 @@ export class AlarmsModule {
       module: AlarmsModule,
       imports: [infrastuctureModule],
       controllers: [AlarmsController],
-      providers: [AlarmsService, AlarmFactory],
+      providers: [AlarmsService, AlarmFactory, MarkAsResolvedUseCase],
     };
   }
 
   /**
-   * TODO: What about this?
+   * TODO: What about this? 🤔
    * @param options
    */
   static forRoot(options: ApplicationBootstrapOptions) {
@@ -29,7 +30,7 @@ export class AlarmsModule {
       module: AlarmsModule,
       imports: [AlarmsPersistenceModule.use(options.driver)],
       controllers: [AlarmsController],
-      providers: [AlarmsService, AlarmFactory],
+      providers: [AlarmsService, AlarmFactory, MarkAsResolvedUseCase],
     };
   }
 }

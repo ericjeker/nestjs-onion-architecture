@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoreModule } from './core/core.module';
-import { ApplicationBootstrapOptions } from './common/application-bootstrap-options.interface';
 import { AlarmsModule } from './alarms/application/alarms.module';
 import { AlarmsPersistenceModule } from './alarms/infrastructure/persistence/alarms-persistence.module';
+import { ApplicationBootstrapOptions } from './common/interfaces/application-bootstrap-options.interface';
 
 @Module({
   imports: [],

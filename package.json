@@ -1,10 +1,10 @@
 {
-  "name": "advanced-architecture",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "@ericjeker/nest-hexagonal-architecture",
+  "version": "1.0.1",
+  "description": "Nest.js Hexagonal Architecture Example",
+  "author": "Eric Jeker <eric@wowww.ch>",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

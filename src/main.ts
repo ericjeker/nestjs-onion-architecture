@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { PersistenceDrivers } from './common/application-bootstrap-options.interface';
+import { PersistenceDrivers } from './common/interfaces/application-bootstrap-options.interface';
 
 async function bootstrap() {
   const app = await NestFactory.create(

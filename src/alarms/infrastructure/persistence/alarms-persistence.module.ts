@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { PersistenceDrivers } from '../../../common/application-bootstrap-options.interface';
+import { PersistenceDrivers } from '../../../common/interfaces/application-bootstrap-options.interface';
 import { InMemoryAlarmsPersistenceModule } from './in-memory/in-memory-alarms-persistence.module';
 import { SqliteAlarmsPersistenceModule } from './sqlite/sqlite-alarms-persistence.module';
 
