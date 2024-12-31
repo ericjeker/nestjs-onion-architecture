@@ -1,0 +1,19 @@
+### GET find all without filters
+GET http://localhost:3000/alarms
+Accept: application/json
+
+> {%
+  client.test("Response success", () => {
+    client.assert(response.status === 200);
+  })
+%}
+
+### GET find one with random UUID
+GET http://localhost:3000/alarms/{{$uuid}}
+Accept: application/json
+
+> {%
+  client.test("Response success", () => {
+    client.assert(response.status === 404, "Response didn't succeed");
+  })
+%}

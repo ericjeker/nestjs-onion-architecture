@@ -1,0 +1,96 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Alarms",
+    "description": "Alarms API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "development"
+    },
+    {
+      "url": "https"
+    }
+  ],
+  "paths": {
+    "/alarms": {
+      "get": {
+        "description": "Return all alarms",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./alarms-schema.json"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new alarm",
+        "requestBody": {
+          "description": "Alarm object to be created",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./alarms-schema.json#/components/schemas/CreateAlarmRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Alarm created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./alarms-schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          }
+        }
+      }
+    },
+    "/alarms/{id}": {
+      "get": {
+        "description": "Return a specific alarm by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UUID of the alarm to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./alarms-schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Alarm not found"
+          }
+        }
+      }
+    }
+  }
+}
