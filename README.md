@@ -11,7 +11,7 @@ as I feel like that specification is easier to grasp.
 
 #### Dependency Rule
 
-- Dependencies always point inward (we visualize these architctures as a circle* with the domain at the center)
+- Dependencies always point inward (we visualize these architctures as a circle[1] with the domain at the center)
 - Inner layers know nothing about outer layers
 - Business/Domain logic is isolated from external concerns
 
@@ -27,7 +27,7 @@ as I feel like that specification is easier to grasp.
 - Both depend on abstractions
 - Abstractions don't depend on details
 
-* Yes, Hexagonal Architecture uses an hexagon, but the principle is identical. The hexagon actually made it confusing.
+[1] Yes, Hexagonal Architecture uses an hexagon, but the principle is identical. The hexagon actually made it confusing.
 
 ## Description
 
