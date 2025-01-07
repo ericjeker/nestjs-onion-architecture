@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CoreModule } from './core/core.module';
 import { AlarmsModule } from './alarms/application/alarms.module';
 import { AlarmsPersistenceModule } from './alarms/infrastructure/persistence/alarms-persistence.module';
@@ -9,7 +8,7 @@ import { ApplicationBootstrapOptions } from './common/interfaces/application-boo
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {
   static register(options: ApplicationBootstrapOptions) {

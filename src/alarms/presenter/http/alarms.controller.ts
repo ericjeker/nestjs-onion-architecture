@@ -7,16 +7,16 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { AlarmsService } from '../../application/alarms.service';
+import { Alarm } from '../../domain/alarm';
 import { CreateAlarmDto } from './dto/create-alarm.dto';
 import { UpdateAlarmDto } from './dto/update-alarm.dto';
+import { FindAllAlarmsDto } from './dto/find-all-alarms.dto';
+import { AlarmsService } from '../../application/alarms.service';
 import { CreateAlarmCommand } from '../../application/commands/create-alarm.command';
 import { UpdateAlarmCommand } from '../../application/commands/update-alarm.command';
-import { FindAllAlarmsDto } from './dto/find-all-alarms.dto';
 import { FindAllAlarmsCommand } from '../../application/commands/find-all-alarms.command';
 import { MarkAsResolvedUseCase } from '../../application/use-cases/mark-as-resolved.use-case';
 import { MarkAlarmAsResolvedCommand } from '../../application/commands/mark-as-resolved.command';
-import { Alarm } from '../../domain/alarm';
 
 @Controller('alarms')
 export class AlarmsController {
