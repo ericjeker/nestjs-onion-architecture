@@ -1,16 +1,13 @@
-import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { Alarm } from '../alarm';
-import {
-  AlarmSeverity,
-  AlarmSeverityValues,
-} from '../value-objects/alarm-severity';
+import { AlarmSeverity, AlarmSeverityValues } from '../value-objects/severity';
+import { AlarmStatus } from '../value-objects/status';
 
-@Injectable()
 export class AlarmFactory {
   static create(name: string, severity: string) {
     const alarmId = randomUUID();
     const alarmSeverity = new AlarmSeverity(severity as AlarmSeverity['value']);
+    const alarmStatus = AlarmStatus.Open;
 
     if (name === '') {
       throw new Error(
@@ -34,6 +31,6 @@ export class AlarmFactory {
       );
     }
 
-    return new Alarm(alarmId, name, alarmSeverity);
+    return new Alarm(alarmId, name, alarmSeverity, alarmStatus);
   }
 }

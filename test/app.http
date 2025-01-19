@@ -1,2 +1,0 @@
-### Run all Alarms HTTP Requests
-run ../src/alarms/test/all.http

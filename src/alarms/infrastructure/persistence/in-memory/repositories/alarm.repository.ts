@@ -1,6 +1,7 @@
 import { AlarmRepository } from '../../../../domain/repositories/alarm.repository';
 import { Alarm } from '../../../../domain/alarm';
 import { AlarmEntity } from '../entities/alarm.entity';
+import { NotFoundException } from '@nestjs/common';
 
 export class InMemoryAlarmRepository implements AlarmRepository {
   /**
@@ -14,6 +15,10 @@ export class InMemoryAlarmRepository implements AlarmRepository {
   }
 
   async findById(id: string): Promise<Alarm> {
+    if (!this.alarms.has(id)) {
+      throw new NotFoundException();
+    }
+
     return this.alarms.get(id).toDomain();
   }
 

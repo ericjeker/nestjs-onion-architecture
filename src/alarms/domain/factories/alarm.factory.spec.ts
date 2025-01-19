@@ -1,8 +1,5 @@
 import { AlarmFactory } from './alarm.factory';
-import {
-  AlarmSeverity,
-  AlarmSeverityValues,
-} from '../value-objects/alarm-severity';
+import { AlarmSeverity, AlarmSeverityValues } from '../value-objects/severity';
 
 describe('AlarmFactory', () => {
   describe('create', () => {

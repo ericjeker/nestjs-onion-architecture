@@ -9,9 +9,6 @@
     {
       "url": "http://localhost:3000",
       "description": "development"
-    },
-    {
-      "url": "https"
     }
   ],
   "paths": {

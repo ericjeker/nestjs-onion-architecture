@@ -1,36 +1,24 @@
 import { DynamicModule, Module, Type } from '@nestjs/common';
-import { ApplicationBootstrapOptions } from '../../common/interfaces/application-bootstrap-options.interface';
 import { AlarmsController } from '../presenter/http/alarms.controller';
-import { AlarmsPersistenceModule } from '../infrastructure/persistence/alarms-persistence.module';
-import { AlarmFactory } from '../domain/factories/alarm.factory';
 import { AlarmsService } from './alarms.service';
-import { MarkAsResolvedUseCase } from './use-cases/mark-as-resolved.use-case';
+import { AlarmUpdateStatusUseCase } from './use-cases/update-status-use.case';
 
 @Module({})
 export class AlarmsModule {
   /**
-   * TODO: not sure what this is for? should it be persistence instead of infrastructure?
-   * @param infrastuctureModule
+   * Configures the AlarmsModule with the specified Infrastructure modules.
+   *
+   * @param {Type[] | DynamicModule[]} infrastuctureModule - An array of modules or dynamic modules to be imported into the AlarmsModule.
+   * @return {object} A module configuration object for the AlarmsModule.
    */
-  static withInfrastucture(infrastuctureModule: Type | DynamicModule) {
+  static withInfrastucture(
+    infrastuctureModule: Type[] | DynamicModule[],
+  ): DynamicModule {
     return {
       module: AlarmsModule,
-      imports: [infrastuctureModule],
+      imports: [...infrastuctureModule],
       controllers: [AlarmsController],
-      providers: [AlarmsService, AlarmFactory, MarkAsResolvedUseCase],
-    };
-  }
-
-  /**
-   * TODO: What about this? 🤔
-   * @param options
-   */
-  static forRoot(options: ApplicationBootstrapOptions) {
-    return {
-      module: AlarmsModule,
-      imports: [AlarmsPersistenceModule.use(options.driver)],
-      controllers: [AlarmsController],
-      providers: [AlarmsService, AlarmFactory, MarkAsResolvedUseCase],
+      providers: [AlarmsService, AlarmUpdateStatusUseCase],
     };
   }
 }

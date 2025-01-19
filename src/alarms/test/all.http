@@ -1,5 +1,0 @@
-###
-run ./create-alarm.http
-
-###
-run ./get-alarm.http

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AlarmRepository } from '../../../domain/repositories/alarm.repository';
 import { InMemoryAlarmRepository } from './repositories/alarm.repository';
-import { MarkAlarmAsResolvedQuery } from '../../../domain/queries/mark-as-resolved.query';
-import { InMemoryMarkAsResolvedQuery } from './queries/mark-as-resolved.query';
+import { InMemoryUpdateAlarmStatusQuery } from './queries/update-status.query';
+import { UpdateAlarmStatusQuery } from '../../../domain/queries/update-status.query';
 
 @Module({
   imports: [],
@@ -13,10 +13,11 @@ import { InMemoryMarkAsResolvedQuery } from './queries/mark-as-resolved.query';
       useClass: InMemoryAlarmRepository,
     },
     {
-      provide: MarkAlarmAsResolvedQuery,
-      useClass: InMemoryMarkAsResolvedQuery,
+      provide: UpdateAlarmStatusQuery,
+      useClass: InMemoryUpdateAlarmStatusQuery,
     },
   ],
-  exports: [AlarmRepository, MarkAlarmAsResolvedQuery],
+  // This export the implementation (InMemory...)
+  exports: [AlarmRepository, UpdateAlarmStatusQuery],
 })
 export class InMemoryAlarmsPersistenceModule {}

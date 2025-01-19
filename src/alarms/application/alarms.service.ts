@@ -7,9 +7,12 @@ import { FindAllAlarmsCommand } from './commands/find-all-alarms.command';
 import { UpdateAlarmCommand } from './commands/update-alarm.command';
 
 /**
- * This is a CRUD service. Basically, we don't want to have more than CRUD
- * function in here. The rest should be stored in use cases. Use cases can
- * be fund in `./use-cases/*`
+ * This is a CRUD service. We don't want to have more than CRUD method in here.
+ * A CRUD service follows a Delegation pattern. Every method are forwarded to a
+ * Repository.
+ *
+ * More specific commands should be stored in use cases. Use cases can be fund
+ * in `./use-cases/*`
  */
 @Injectable()
 export class AlarmsService {

@@ -1,4 +1,4 @@
-import { PaginationCommand } from '../../../common/pagination.command';
+import { PaginationCommand } from '../../../common/commands/pagination.command';
 
 export class FindAllAlarmsCommand extends PaginationCommand {
   constructor(

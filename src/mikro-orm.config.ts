@@ -9,6 +9,6 @@ export default defineConfig({
   entities: [AlarmEntity],
   dbName: 'alarm.db',
   highlighter: new SqlHighlighter(),
-  debug: true,
   logger: logger.log.bind(logger),
+  debug: true,
 });

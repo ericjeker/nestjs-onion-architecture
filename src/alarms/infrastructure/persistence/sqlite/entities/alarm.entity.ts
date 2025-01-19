@@ -4,7 +4,8 @@ import { Alarm } from '../../../../domain/alarm';
 import {
   AlarmSeverity,
   AlarmSeverityValues,
-} from '../../../../domain/value-objects/alarm-severity';
+} from '../../../../domain/value-objects/severity';
+import { AlarmStatus } from '../../../../domain/value-objects/status';
 
 @Entity()
 export class AlarmEntity {
@@ -16,6 +17,9 @@ export class AlarmEntity {
 
   @Property()
   severity: AlarmSeverityValues;
+
+  @Property()
+  status: AlarmStatus;
 
   constructor(alarm: Alarm) {
     this.fromDomain(alarm);
@@ -30,7 +34,12 @@ export class AlarmEntity {
    * @return {Alarm} Returns a new object or domain-specific model containing the transformed data.
    */
   toDomain(): Alarm {
-    return new Alarm(this.id, this.name, new AlarmSeverity(this.severity));
+    return new Alarm(
+      this.id,
+      this.name,
+      new AlarmSeverity(this.severity),
+      this.status,
+    );
   }
 
   /**
@@ -43,5 +52,6 @@ export class AlarmEntity {
     this.id = alarm.id;
     this.name = alarm.name;
     this.severity = alarm.severity.value;
+    this.status = alarm.status;
   }
 }
